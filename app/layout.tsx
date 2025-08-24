@@ -16,9 +16,9 @@ const sourceSans = Source_Sans_3({
 })
 
 export const metadata: Metadata = {
-  title: "Python Community - Dojos, Meetups & Live Coding",
+  title: "Python Pará",
   description:
-    "Junte-se à nossa comunidade Python! Participamos de dojos, meetups e live codings para aprender e crescer juntos.",
+    "Comunidade de usuários e desenvolvedores que utilizam Python no Pará 🏳️‍ Comunidade oficialmente na lista de comunidades locais Python: python.org.br",
   generator: "v0.app",
 }
 
