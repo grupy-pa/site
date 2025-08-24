@@ -2,7 +2,7 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -22,16 +22,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'   # LTS (evita incompatibilidades do Next com Node 22)
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --force
+        run: npm ci
 
-      - name: Build static Next.js app
-        run: npm run build
+      - name: Build & Export static Next.js
         env:
+          # Se o site for servido em /site, mantenha isso; senão, remova.
           NEXT_PUBLIC_BASE_PATH: /site
+        run: |
+          npx next build
+          npx next export    # garante a pasta ./out
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
@@ -43,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      # url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}  # <-- identação corrigida
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
