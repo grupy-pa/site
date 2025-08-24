@@ -34,7 +34,6 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /site
         run: |
           npx next build
-          npx next export    # garante a pasta ./out
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
