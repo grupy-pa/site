@@ -1,24 +1,25 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, Source_Sans_3 } from "next/font/google"
+import { Inter, Poppins } from "next/font/google"
 import "./globals.css"
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading",
-})
-
-const sourceSans = Source_Sans_3({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
 })
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700", "800"],
+})
+
 export const metadata: Metadata = {
-  title: "Python Pará",
+  title: "Python Pará - Comunidade Python do Pará",
   description:
-    "Comunidade de usuários e desenvolvedores que utilizam Python no Pará 🏳️‍ Comunidade oficialmente na lista de comunidades locais Python: python.org.br",
+    "Junte-se à comunidade Python do Pará! Participamos de dojos, meetups e live codings para aprender e crescer juntos.",
   generator: "v0.app",
 }
 
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${playfairDisplay.variable} ${sourceSans.variable}`}>
+    <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
       <body>{children}</body>
     </html>
   )
