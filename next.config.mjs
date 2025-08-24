@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Necessário para exportação estática
-
+  output: 'export',
+  trailingSlash: true,
+  basePath: process.env.NODE_ENV === 'production' ? '/site' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/site' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,10 +13,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-
-  // ⚠️ Só adicione isso se você estiver publicando em um subdiretório como https://usuario.github.io/repositorio
-  basePath: '/site',
-  assetPrefix: '/site/',
 }
 
 export default nextConfig
